@@ -1,21 +1,14 @@
-//---------------------------------------------------------------
-// File: TreeMain.c
-// Purpose: Main file for a demonstration of a binary tree
-// Programming Language: C
-// Author: Dr. Rick Coleman
-// Date: February, 2002
-//---------------------------------------------------------------
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "Code201_Tree.h"
 
-int main(void)
+int main()
 {
     TreeNode *newNode;
-    char     dummy; // Used in the scanf() to to pause before continuing
+    char dummy; // Used in the scanf() to to pause before continuing
 
-    // Do initialization stuff
+    //Initializing the tree
     CreateTree();
 
     printf("Building tree...\n");
@@ -27,9 +20,6 @@ int main(void)
     // Node 1
     newNode = (TreeNode *)malloc(sizeof(TreeNode));
     newNode->Key = 8;
-    newNode->iValue = 2;
-    newNode->fValue = 2.3f;
-    strcpy(newNode->cArray, "Node1");
     newNode->left = newNode->right = NULL;
     Insert1(newNode);
 
@@ -38,70 +28,37 @@ int main(void)
     // Access to the previous node is not lost because it is not in the tree.
     newNode = (TreeNode *)malloc(sizeof(TreeNode));
     newNode->Key = 4;
-    newNode->iValue = 4;
-    newNode->fValue = 3.4f;
-    strcpy(newNode->cArray, "Node2");
     newNode->left = newNode->right = NULL;
     Insert1(newNode);
 
     // Node 3
     newNode = (TreeNode *)malloc(sizeof(TreeNode));
     newNode->Key = 12;
-    newNode->iValue = 8;
-    newNode->fValue = 4.5f;
-    strcpy(newNode->cArray, "Node3");
     newNode->left = newNode->right = NULL;
     Insert1(newNode);
 
     // Node 4
     newNode = (TreeNode *)malloc(sizeof(TreeNode));
     newNode->Key = 2;
-    newNode->iValue = 16;
-    newNode->fValue = 5.6f;
-    strcpy(newNode->cArray, "Node4");
     newNode->left = newNode->right = NULL;
     Insert1(newNode);
 
     // Node 5
     newNode = (TreeNode *)malloc(sizeof(TreeNode));
     newNode->Key = 6;
-    newNode->iValue = 32;
-    newNode->fValue = 6.7f;
-    strcpy(newNode->cArray, "Node5");
     newNode->left = newNode->right = NULL;
     Insert1(newNode);
 
     // Node 6
     // Remainder of the nodes are inserted using Insert2()
-    Insert2(10, 7.8f, 64, "Node6");
+    Insert2(10);
 
     // Node 7
-    Insert2(14, 8.9f, 128, "Node7");
+    Insert2(14);
 
     // Node 8
-    Insert2(1, 9.0f, 256, "Node8");
-
-    // Node 9
-    Insert2(3, 0.9f, 512, "Node9");
-
-    // Node 10
-    Insert2(5, 9.8f, 1024, "Node10");
-
-    // Node 11
-    Insert2(7, 8.7f, 2048, "Node11");
-
-    // Node 12
-    Insert2(9, 7.6f, 4096, "Node12");
-
-    // Node 13
-    Insert2(11, 6.5f, 8192, "Node13");
-
-    // Node 14
-    Insert2(13, 5.4f, 16384, "Node14");
-
-    // Node 15
-    Insert2(15, 4.3f, 32768, "Node15");
-
+    Insert2(1);
+    
     printf("All nodes inserted\n");
 
     // Print the tree

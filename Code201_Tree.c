@@ -1,6 +1,6 @@
 /*
 Submitted by 
-bla
+
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -99,16 +99,13 @@ int Insert1(TreeNode *newNode)
 }
 
 //Creates a new node to be inserted
-int Insert2(int Key, float f, int i, char *cA)
+int Insert2(int Key)
 {
     TreeNode *newNode;
 
     // Create the new node and copy data into it
     newNode = (TreeNode *)malloc(sizeof(TreeNode));
     newNode->Key = Key;
-    newNode->fValue = f;
-    newNode->iValue = i;
-    strcpy(newNode->cArray, cA);
     newNode->left = newNode->right = NULL;
 
     // Call Insert1() to do the insertion
@@ -209,10 +206,6 @@ int Delete(int Key)
             }
             // Copies the replacement values into the node to be deleted 
             delNode->Key = temp->Key;
-            delNode->fValue = temp->fValue;
-            delNode->iValue = temp->iValue;
-            strcpy(delNode->cArray, temp->cArray);
-
             // Removes the replacement node from the tree 
             if(back == delNode)
                 back->left = temp->left;
@@ -227,7 +220,7 @@ int Delete(int Key)
 //Prints just one node
 void PrintOne(TreeNode *T)
 {
-    printf("%d\t%f\t%d\t%s\n", T->Key, T->fValue, T->iValue, T->cArray);
+    printf("%d ", T->Key);
 }
 
 //Recursively prints all the nodes

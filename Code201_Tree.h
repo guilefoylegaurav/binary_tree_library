@@ -6,9 +6,6 @@
 typedef struct TreeNodeType
 {
     int                 Key;
-    float               fValue;
-    int                 iValue;
-    char                cArray[7];
     struct TreeNodeType *left;
     struct TreeNodeType *right;
 }TreeNode;
@@ -22,7 +19,7 @@ void CreateTree();
 int isEmpty();
 TreeNode *SearchTree(int Key);
 int Insert1(TreeNode *newNode);
-int Insert2(int Key, float f, int i, char *cA);
+int Insert2(int Key);
 int Delete(int Key);
 void PrintOne(TreeNode *T);
 void PrintTree();
