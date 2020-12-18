@@ -1,6 +1,12 @@
 /*
-Submitted by 
-
+Submitted by:
+GROUP 5
+--------
+Snehil Sharma (1912017)​
+Gaurav Bhattacharjee (1912018)​
+Sri Sylamsh Amrutakavi (1912065)​
+Kotari Aditya (1912093)​
+Saumyajit Chowdhury (1912116)​
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -223,19 +229,102 @@ void PrintOne(TreeNode *T)
     printf("%d ", T->Key);
 }
 
-//Recursively prints all the nodes
-static void PrintAll(TreeNode *T)
+//Depth first traversal : Inorder
+static void Inorder(TreeNode *T)
 {
-    if(T != NULL)
+    if (T == NULL)
     {
-        PrintAll(T->left);
-        PrintOne(T);
-        PrintAll(T->right);
+        return; 
     }
+    
+    Inorder(T->left); 
+    PrintOne(T); 
+    Inorder(T->right); 
 }
+
+
+
+//Depth first traversal : Preorder
+static void Preorder(TreeNode *T)
+{
+    if (T == NULL)
+    {
+        return; 
+    }
+    PrintOne(T); 
+    Preorder(T->left); 
+    Preorder(T->right); 
+}
+
+
+
+
+//Depth first traversal : Postorder
+static void Postorder(TreeNode *T)
+{
+    if (T == NULL)
+    {
+        return; 
+    }
+    
+    Postorder(T->left); 
+    Postorder(T->right); 
+    PrintOne(T); 
+}
+
+
 
 //Prints the tree by calling PrintAll
 void PrintTree()
 {
-    PrintAll(root);
+    Inorder(root);
+}
+
+
+
+/*UTILITY FUNCTIONS*/
+TreeNode** createQueue(int *front, int *rear)
+{
+    TreeNode **queue =
+        (TreeNode**)malloc(sizeof(TreeNode*)
+                                       *500);
+ 
+    *front = *rear = 0;
+    return queue;
+}
+ 
+void enQueue(TreeNode **queue, int *rear, 
+                             TreeNode *new_node)
+{
+    queue[*rear] = new_node;
+    (*rear)++;
+}
+ 
+TreeNode *deQueue(TreeNode **queue, int *front)
+{
+    (*front)++;
+    return queue[*front - 1];
+}
+ 
+void printLevelOrder(TreeNode* root)
+{
+    int rear, front;
+    TreeNode **queue = createQueue(&front, &rear);
+    TreeNode *temp_node = root;
+ 
+    while (temp_node)
+    {
+        PrintOne(temp_node);
+ 
+        /*Enqueue left child */
+        if (temp_node->left)
+            enQueue(queue, &rear, temp_node->left);
+ 
+        /*Enqueue right child */
+        if (temp_node->right)
+            enQueue(queue, &rear, temp_node->right);
+ 
+        /*Dequeue node and make it temp_node*/
+        temp_node = deQueue(queue, &front);
+    }
 }
