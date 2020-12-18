@@ -11,56 +11,66 @@ int main()
     //Initializing the tree
     CreateTree();
 
-    printf("Building tree...\n");
-    // Do simple insert of 15 nodes into tree.
-    // Insert with keys in the order.
-    //   8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15 
-    // First 5 nodes are inserted using Insert1(). Remainder using Insert2()
+    printf("Building tree with 14, 15, 8, 9, 7, 6 as the elements...\n");
 
-    // Node 1
-    newNode = (TreeNode *)malloc(sizeof(TreeNode));
-    newNode->Key = 8;
-    newNode->left = newNode->right = NULL;
-    Insert1(newNode);
-
-    // Node 2
-    // Note: Each time a new node is allocated we reuse the same pointer
-    // Access to the previous node is not lost because it is not in the tree.
-    newNode = (TreeNode *)malloc(sizeof(TreeNode));
-    newNode->Key = 4;
-    newNode->left = newNode->right = NULL;
-    Insert1(newNode);
-
-    // Node 3
-    newNode = (TreeNode *)malloc(sizeof(TreeNode));
-    newNode->Key = 12;
-    newNode->left = newNode->right = NULL;
-    Insert1(newNode);
-
-    // Node 4
-    newNode = (TreeNode *)malloc(sizeof(TreeNode));
-    newNode->Key = 2;
-    newNode->left = newNode->right = NULL;
-    Insert1(newNode);
-
-    // Node 5
-    newNode = (TreeNode *)malloc(sizeof(TreeNode));
-    newNode->Key = 6;
-    newNode->left = newNode->right = NULL;
-    Insert1(newNode);
-
-    // Node 6
-    // Remainder of the nodes are inserted using Insert2()
-    Insert2(10);
-
-    // Node 7
     Insert2(14);
+    Insert2(15);
+    Insert2(8);
+    Insert2(9);
+    Insert2(7);
+    Insert2(6);
 
-    // Node 8
-    Insert2(1);
-    
     printf("All nodes inserted\n");
-
+    int one = 1;
+    while(one){
+        int c=0;
+        printf("Type:\n0 - insert a node\n1 - delete a node\n2 - traverse the tree(preorder)\n3 - traverse the tree(postorder)\n4 - traverse the tree(inorder)\n5 - traverse the tree(level-based order)\n6 - search for a key\n7 - exit\n");
+        scanf("%d", &c);
+        switch (c)
+        {
+        case 0:
+            printf("Type in the value of the node to be inserted:");
+            int temp;
+            scanf("%d", &temp);
+            Insert2(temp);
+            printf("Insertion completed.\n");
+            break;
+        case 1:
+            /* code */
+            break;
+        case 2:
+            /* code */
+            break;
+        case 3:
+            /* code */
+            break;
+        case 4:
+            /* code */
+            break;
+        case 5:
+            /* code */
+            break;
+        case 6:
+            printf("Type in the key value to be searched for:");
+            scanf("%d", &temp);
+            newNode = SearchTree(6);
+            if(newNode != NULL)
+            {
+                printf("The tree contains the given key.");
+                free(newNode);
+            }
+            else
+                printf("The tree doesn't contain the given key.\n");
+            break;
+        case 7:
+            one = 0;
+            break;
+        default:
+            printf("Wrong input, try again.\n\n");
+            break;
+        }
+    }
+    /*
     // Print the tree
     printf("-----------------------------------------------------\n");
     PrintTree();
@@ -75,8 +85,9 @@ int main()
     if(newNode != NULL)
     {
         PrintOne(newNode);
-        free(newNode); // Remember this is a duplicate node of the one in
-                       // in the tree and main() is responsible for deleting it.
+
+        //as newNode is a duplicate node and not in the tree.
+        free(newNode);
     }
     else
         printf("Search key not found.\n");
@@ -151,4 +162,5 @@ int main()
     scanf("%c", &dummy);
 
     printf("-----------------------------------------------------\n");
+    */
 }
